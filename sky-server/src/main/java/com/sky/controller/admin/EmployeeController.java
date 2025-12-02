@@ -12,10 +12,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -69,6 +69,62 @@ public class EmployeeController {
     @PostMapping("/logout")
     @ApiOperation("员工退出")
     public Result<String> logout() {
+        return Result.success();
+    }
+    
+    /**
+     * 查询员工列表
+     */
+    @GetMapping("/list")
+    @ApiOperation("查询员工列表")
+    public Result<List<Employee>> list(@RequestParam(required = false) String name) {
+        log.info("查询员工列表，name={}", name);
+        // 暂时返回空列表，等待 Service 实现
+        List<Employee> list = new ArrayList<>();
+        return Result.success(list);
+    }
+    
+    /**
+     * 新增员工
+     */
+    @PostMapping
+    @ApiOperation("新增员工")
+    public Result save(@RequestBody Employee employee) {
+        log.info("新增员工：{}", employee);
+        // TODO: 调用 Service
+        return Result.success();
+    }
+    
+    /**
+     * 根据ID查询员工
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("根据ID查询员工")
+    public Result<Employee> getById(@PathVariable Long id) {
+        log.info("根据ID查询员工：{}", id);
+        // TODO: 调用 Service
+        return Result.success(null);
+    }
+    
+    /**
+     * 修改员工
+     */
+    @PutMapping
+    @ApiOperation("修改员工")
+    public Result update(@RequestBody Employee employee) {
+        log.info("修改员工：{}", employee);
+        // TODO: 调用 Service
+        return Result.success();
+    }
+    
+    /**
+     * 启用/停用员工账号
+     */
+    @PutMapping("/status/{status}")
+    @ApiOperation("启用/停用员工账号")
+    public Result updateStatus(@PathVariable Integer status, @RequestParam Long id) {
+        log.info("启用/停用员工账号：id={}, status={}", id, status);
+        // TODO: 调用 Service
         return Result.success();
     }
     

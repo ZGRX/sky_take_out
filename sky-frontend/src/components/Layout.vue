@@ -13,13 +13,29 @@
           text-color="#bfcbd9"
           active-text-color="#409EFF"
         >
+          <el-menu-item index="/employee">
+            <el-icon><User /></el-icon>
+            <span>员工管理</span>
+          </el-menu-item>
+          <el-menu-item index="/category">
+            <el-icon><Menu /></el-icon>
+            <span>分类管理</span>
+          </el-menu-item>
           <el-menu-item index="/dish">
             <el-icon><Dish /></el-icon>
             <span>菜品管理</span>
           </el-menu-item>
+          <el-menu-item index="/setmeal">
+            <el-icon><Box /></el-icon>
+            <span>套餐管理</span>
+          </el-menu-item>
           <el-menu-item index="/order">
             <el-icon><Document /></el-icon>
             <span>订单管理</span>
+          </el-menu-item>
+          <el-menu-item index="/statistics">
+            <el-icon><DataLine /></el-icon>
+            <span>数据统计</span>
           </el-menu-item>
         </el-menu>
       </el-aside>
@@ -46,7 +62,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { Dish, Document } from '@element-plus/icons-vue'
+import { Dish, Document, User, Menu, Box, DataLine } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const route = useRoute()

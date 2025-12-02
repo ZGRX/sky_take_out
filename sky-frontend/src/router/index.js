@@ -3,6 +3,10 @@ import Login from '../components/Login.vue'
 import Layout from '../components/Layout.vue'
 import DishList from '../views/DishList.vue'
 import OrderList from '../views/OrderList.vue'
+import EmployeeList from '../views/EmployeeList.vue'
+import CategoryList from '../views/CategoryList.vue'
+import SetmealList from '../views/SetmealList.vue'
+import StatisticsDashboard from '../views/StatisticsDashboard.vue'
 
 const routes = [
   {
@@ -13,17 +17,37 @@ const routes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dish',
+    redirect: '/employee',
     children: [
+      {
+        path: 'employee',
+        name: 'Employee',
+        component: EmployeeList
+      },
+      {
+        path: 'category',
+        name: 'Category',
+        component: CategoryList
+      },
       {
         path: 'dish',
         name: 'Dish',
         component: DishList
       },
       {
+        path: 'setmeal',
+        name: 'Setmeal',
+        component: SetmealList
+      },
+      {
         path: 'order',
         name: 'Order',
         component: OrderList
+      },
+      {
+        path: 'statistics',
+        name: 'Statistics',
+        component: StatisticsDashboard
       }
     ]
   }
