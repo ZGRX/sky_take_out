@@ -1,17 +1,14 @@
 # 苍穹外卖系统
 
-这是一个简化的外卖管理系统，包含用户端和管理端功能，采用前后端分离架构。
+这是一个基于黑马程序员苍穹外卖项目的改进版，采用前后端完全分离架构，使用现代化技术栈开发的外卖管理系统。
 
 ## 项目简介
 
-本项目旨在帮助大学生学习完整的企业级项目开发流程，虽然功能简化，但麻雀虽小五脏俱全，包含了：
-- Spring Boot 后端开发
-- MyBatis 数据库操作
-- JWT 认证授权
-- RESTful API 设计
-- 分层架构（Controller-Service-Mapper）
-- 统一结果封装
-- 全局异常处理
+本项目基于黑马程序员的苍穹外卖教学项目，进行了以下改进：
+- ✅ **前端独立仓库**: `sky-frontend/` 目录，完全独立的前端项目
+- ✅ **Vue 3 重构**: 使用 Vue 3 Composition API + Vite 构建
+- ✅ **Element Plus**: 替换原 Element UI，UI 更现代化
+- ✅ **开发体验优化**: Vite 热更新、快速启动
 
 ## 技术栈
 
@@ -20,374 +17,222 @@
 - **MyBatis** - 持久层框架
 - **MySQL** - 数据库
 - **Druid** - 数据库连接池
-- **JWT** - 用户认证
-- **Lombok** - 简化代码
-- **Swagger** - API文档
+- **JWT (jjwt 0.9.1)** - 用户认证
+- **Lombok 1.18.36** - 简化代码（JDK 17 兼容）
+- **Swagger 2.9.2** - API文档
+- **JAXB API 2.3.1** - JWT 依赖（JDK 11+ 必需）
 
-### 数据库
-- MySQL 5.7+
-
-## 项目结构
-
-```
-sky-take-out/
-├── sky-common/          # 公共模块（工具类、常量）
-├── sky-pojo/            # 实体类模块（Entity、DTO、VO）
-├── sky-server/          # 服务端模块
-│   ├── controller/      # 控制器层
-│   │   ├── admin/      # 管理端接口
-│   │   └── user/       # 用户端接口
-│   ├── service/        # 业务逻辑层
-│   ├── mapper/         # 数据访问层
-│   ├── config/         # 配置类
-│   ├── interceptor/    # 拦截器
-│   └── handler/        # 异常处理器
-└── database/           # 数据库脚本
-```
+### 前端
+- **Vue 3.3.4** - 渐进式框架
+- **Vite 5.0.0** - 新一代构建工具
+- **Element Plus** - 组件库
+- **Vue Router 4** - 路由管理
+- **Axios 1.4.0** - HTTP 客户端
 
 ## 功能模块
 
-### 管理端功能
+### ✅ 已实现功能
+
+#### 管理端功能
 1. **员工管理**
-   - 员工登录/退出
-   - 默认账号：admin / 123456
+   - ✅ 员工登录/退出 (JWT 认证)
+   - ✅ 默认账号：admin / 123456
 
 2. **菜品管理**
-   - 菜品查询（全部/按分类）
-   - 菜品新增
-   - 菜品修改
-   - 菜品删除
+   - ✅ 菜品列表查询
+   - ✅ 菜品新增
+   - ✅ 菜品编辑
+   - ✅ 菜品删除
+   - ✅ 菜品搜索
+   - ✅ 价格自动转换（元/分）
+   - ✅ 状态管理（启售/停售）
 
 3. **订单管理**
-   - 查看所有订单
-   - 接单/拒单
-   - 订单状态管理
-   - 完成订单
+   - ✅ 查看所有订单
+   - ✅ 接单操作
+   - ✅ 拒单操作
+   - ✅ 完成订单
+   - ✅ 订单状态显示
 
-### 用户端功能
-1. **用户登录**
-   - 手机号登录（自动注册）
+4. **界面优化**
+   - ✅ 侧边栏导航
+   - ✅ 顶部用户信息栏
+   - ✅ 渐变登录页
+   - ✅ 响应式布局
+   - ✅ 表格展示优化
 
-2. **菜品浏览**
-   - 查看菜品列表
-   - 按分类查看菜品
+---
 
-3. **购物车**
-   - 添加菜品到购物车
-   - 查看购物车
-   - 修改购物车数量
-   - 清空购物车
+### ❌ 未实现功能（待开发）
 
-4. **订单管理**
-   - 提交订单
-   - 查看我的订单
+#### 管理端前端界面
+1. **员工管理模块**
+   - [ ] 员工列表查询界面
+   - [ ] 员工新增对话框
+   - [ ] 员工编辑功能
+   - [ ] 员工删除确认
+   - [ ] 员工账号启用/禁用开关
+
+2. **分类管理模块**
+   - [ ] 分类列表展示页面
+   - [ ] 分类新增表单
+   - [ ] 分类编辑弹窗
+   - [ ] 分类删除操作
+   - [ ] 分类排序拖拽
+   - [ ] 分类启用/停用切换
+
+3. **套餐管理模块**
+   - [ ] 套餐列表页面
+   - [ ] 套餐新增（包含菜品选择）
+   - [ ] 套餐编辑功能
+   - [ ] 套餐删除确认
+   - [ ] 套餐起售/停售状态
+
+4. **数据统计模块**
+   - [ ] 营业额统计图表（ECharts）
+   - [ ] 用户统计报表
+   - [ ] 订单统计分析
+   - [ ] 销量排行 Top10
+   - [ ] 数据导出功能（Excel）
+
+#### 用户端（C端小程序/H5）
+1. **用户界面（完整前端）**
+   - [ ] 首页展示（轮播图、分类、推荐）
+   - [ ] 菜品列表页面
+   - [ ] 菜品详情页
+   - [ ] 购物车页面
+   - [ ] 订单确认页
+   - [ ] 订单列表页
+   - [ ] 订单详情页
+   - [ ] 个人中心页
+
+2. **地址管理**
+   - [ ] 地址列表页面
+   - [ ] 新增地址表单
+   - [ ] 编辑地址功能
+   - [ ] 删除地址确认
+   - [ ] 设置默认地址
+
+3. **订单功能增强**
+   - [ ] 订单详情查看
+   - [ ] 订单取消功能
+   - [ ] 订单评价系统
+   - [ ] 再来一单快捷操作
+
+4. **用户功能**
+   - [ ] 手机号登录界面
+   - [ ] 用户信息管理
+   - [ ] 历史订单查询
+   - [ ] 收藏菜品功能
+
+#### 后端功能（如需扩展）
+1. **高级功能**
+   - [ ] Redis 缓存
+   - [ ] 消息队列（订单异步处理）
+   - [ ] 定时任务（自动取消超时订单）
+   - [ ] 文件上传（菜品图片）
+   - [ ] WebSocket（订单实时推送）
+
+2. **优化功能**
+   - [ ] 接口限流
+   - [ ] 日志监控
+   - [ ] 接口文档完善
+   - [ ] 单元测试
+
+---
 
 ## 快速开始
 
-### 1. 环境准备
-- JDK 11+
-- Maven 3.6+
-- MySQL 5.7+
-- IDEA 或其他 Java IDE
+### 环境要求
+- **JDK 17** (已配置)
+- **Maven 3.6+**
+- **MySQL 5.7+**
+- **Node.js 16+** (前端需要)
+- **IntelliJ IDEA** 或其他 Java IDE
 
-### 2. 数据库初始化
+### 1. 数据库初始化
 
-执行数据库脚本创建数据库和表：
 ```bash
 mysql -u root -p < database/sky_take_out.sql
 ```
 
-或者手动执行 `database/sky_take_out.sql` 文件中的SQL语句。
+### 2. 后端启动
 
-**注意**：请根据你的MySQL配置修改以下信息：
-- 数据库用户名（默认：root）
-- 数据库密码（默认：123456）
-
-### 3. 修改配置
-
-编辑 `sky-server/src/main/resources/application.yml`，修改数据库连接信息：
+#### 修改配置
+编辑 `sky-server/src/main/resources/application-dev.yml`：
 
 ```yaml
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/sky_take_out?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
       username: root        # 修改为你的数据库用户名
       password: 123456      # 修改为你的数据库密码
 ```
 
-### 4. 编译项目
-
-在项目根目录下执行：
+#### 构建并运行
 ```bash
-mvn clean install
+mvn clean package -DskipTests
 ```
 
-### 5. 启动项目
+在 IntelliJ IDEA 中运行 `SkyApplication.java`
 
-方式一：使用IDEA
-1. 导入项目到IDEA
-2. 找到 `sky-server` 模块下的 `SkyApplication` 类
-3. 右键 -> Run 'SkyApplication'
+后端地址: http://localhost:8080
 
-方式二：使用Maven命令
+### 3. 前端启动
+
 ```bash
-cd sky-server
-mvn spring-boot:run
+cd sky-frontend
+npm install
+npm run dev
 ```
 
-### 6. 访问项目
+前端地址: **http://localhost:5173**
 
-- **后端接口**: http://localhost:8080
-- **Swagger文档**: http://localhost:8080/swagger-ui.html
+登录账号: `admin` / `123456`
 
-## API接口说明
-
-### 管理端接口（/admin）
-
-#### 员工登录
-```
-POST /admin/employee/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "123456"
-}
-```
-
-#### 菜品管理
-```
-# 查询所有菜品
-GET /admin/dish/list
-Authorization: Bearer {token}
-
-# 新增菜品
-POST /admin/dish
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-  "name": "红烧肉",
-  "categoryId": 1,
-  "price": 48.00,
-  "image": "http://example.com/image.jpg",
-  "description": "美味红烧肉",
-  "status": 1
-}
-
-# 修改菜品
-PUT /admin/dish
-Authorization: Bearer {token}
-
-# 删除菜品
-DELETE /admin/dish/{id}
-Authorization: Bearer {token}
-```
-
-#### 订单管理
-```
-# 查询所有订单
-GET /admin/order/list
-Authorization: Bearer {token}
-
-# 接单
-PUT /admin/order/confirm/{id}
-Authorization: Bearer {token}
-
-# 拒单
-PUT /admin/order/rejection/{id}
-Authorization: Bearer {token}
-
-# 完成订单
-PUT /admin/order/complete/{id}
-Authorization: Bearer {token}
-```
-
-### 用户端接口（/user）
-
-#### 用户登录
-```
-POST /user/user/login
-Content-Type: application/json
-
-{
-  "phone": "13800138000"
-}
-```
-
-#### 菜品浏览（无需登录）
-```
-# 查询所有菜品
-GET /user/dish/list
-
-# 按分类查询菜品
-GET /user/dish/category/{categoryId}
-```
-
-#### 购物车
-```
-# 添加购物车
-POST /user/shoppingCart/add
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-  "dishId": 1
-}
-
-# 查看购物车
-GET /user/shoppingCart/list
-Authorization: Bearer {token}
-
-# 减少数量
-POST /user/shoppingCart/sub
-Authorization: Bearer {token}
-
-# 清空购物车
-DELETE /user/shoppingCart/clean
-Authorization: Bearer {token}
-```
-
-#### 订单
-```
-# 提交订单
-POST /user/order/submit
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-  "consignee": "张三",
-  "phone": "13800138000",
-  "address": "北京市朝阳区xx路xx号",
-  "remark": "尽快送达",
-  "payMethod": 1
-}
-
-# 查看我的订单
-GET /user/order/list
-Authorization: Bearer {token}
-```
-
-## 数据库设计
-
-### 核心表说明
-
-1. **employee** - 员工表（管理员）
-   - 存储系统管理员信息
-   - 默认账号：admin / 123456（密码已MD5加密）
-
-2. **user** - 用户表
-   - 存储C端用户信息
-   - 手机号登录自动注册
-
-3. **category** - 分类表
-   - 菜品分类管理
-   - 预置了川菜、湘菜、粤菜、家常菜等分类
-
-4. **dish** - 菜品表
-   - 存储菜品信息
-   - 包含名称、价格、图片、描述等
-
-5. **shopping_cart** - 购物车表
-   - 用户购物车数据
-   - 临时存储，下单后清空
-
-6. **orders** - 订单表
-   - 订单主表
-   - 记录订单状态、金额等信息
-
-7. **order_detail** - 订单明细表
-   - 订单详情
-   - 记录订单中的每个菜品
-
-## 学习要点
-
-### 1. 项目分层架构
-- **Controller层**：接收请求，参数校验，调用Service
-- **Service层**：业务逻辑处理
-- **Mapper层**：数据库访问
-
-### 2. JWT认证机制
-- 登录成功生成token
-- 请求头携带token访问受保护接口
-- 拦截器验证token有效性
-
-### 3. 统一结果封装
-```java
-Result.success(data)  // 成功响应
-Result.error(msg)     // 失败响应
-```
-
-### 4. ThreadLocal应用
-使用 `BaseContext` 在整个请求链路中传递当前用户ID
-
-### 5. 事务管理
-订单提交使用 `@Transactional` 保证数据一致性
+---
 
 ## 常见问题
 
-### 1. 启动报错：数据库连接失败
-- 检查MySQL是否启动
-- 确认数据库用户名密码是否正确
-- 确认数据库 `sky_take_out` 是否已创建
+### 1. Lombok 编译错误
+已升级到 Lombok 1.18.36，兼容 JDK 17+
 
-### 2. 接口返回401
-- 检查是否已登录获取token
-- 确认请求头中是否携带了正确的token
-- 检查token是否过期（默认2小时）
+**解决**: IntelliJ → `File` → `Invalidate Caches...` → 重启
 
-### 3. Swagger无法访问
-- 确认项目已启动
-- 访问：http://localhost:8080/swagger-ui.html
-- 检查浏览器是否拦截
+### 2. JWT 错误
+已添加 JAXB API 2.3.1 依赖
 
-## 测试流程
+### 3. 前端连接失败
+点击 "🔍 测试后端连接" 按钮诊断
 
-### 管理端测试流程
-1. 管理员登录（admin/123456）
-2. 获取token
-3. 查看菜品列表
-4. 新增/修改/删除菜品
-5. 查看订单列表
-6. 处理订单（接单/拒单/完成）
+---
 
-### 用户端测试流程
-1. 用户登录（任意手机号）
-2. 获取token
-3. 浏览菜品
-4. 添加菜品到购物车
-5. 查看购物车
-6. 提交订单
-7. 查看我的订单
+## API 接口
 
-## 扩展方向
+### 员工登录
+```http
+POST /admin/employee/login
+{"username": "admin", "password": "123456"}
+```
 
-如果想进一步学习，可以尝试以下扩展：
-1. 添加地址簿管理功能
-2. 实现真实的支付对接
-3. 添加订单配送状态跟踪
-4. 实现商家端实时订单推送
-5. 添加用户评价功能
-6. 开发前端页面（Vue.js）
-7. 实现文件上传（菜品图片）
-8. 添加Redis缓存
-9. 实现分页查询
-10. 添加数据统计报表
+### 菜品管理
+```http
+GET  /admin/dish/list          # 查询列表
+POST /admin/dish               # 新增
+PUT  /admin/dish               # 编辑
+DELETE /admin/dish/{id}        # 删除
+```
 
-## 项目亮点
+### 订单管理
+```http
+GET /admin/order/list          # 查询订单
+PUT /admin/order/confirm/{id}  # 接单
+PUT /admin/order/rejection/{id} # 拒单
+PUT /admin/order/complete/{id}  # 完成
+```
 
-1. **完整的分层架构**：学习企业级项目分层设计
-2. **JWT认证**：掌握主流的认证方案
-3. **统一封装**：Result统一返回、全局异常处理
-4. **双端设计**：管理端和用户端分离
-5. **事务管理**：订单业务的事务处理
-6. **拦截器应用**：JWT token拦截验证
-7. **MyBatis实践**：注解和XML两种方式
-8. **RESTful设计**：标准的API设计风格
+---
 
-## 联系与反馈
+## 致谢
 
-如果在学习过程中遇到问题，欢迎提issue或联系我。
-
-祝学习愉快！🎉
+感谢黑马程序员提供的苍穹外卖项目教学资源
