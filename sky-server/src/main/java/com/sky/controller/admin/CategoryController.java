@@ -2,12 +2,13 @@ package com.sky.controller.admin;
 
 import com.sky.entity.Category;
 import com.sky.result.Result;
+import com.sky.service.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,9 @@ import java.util.List;
 @Api(tags = "分类管理接口")
 public class CategoryController {
     
+    @Autowired
+    private CategoryService categoryService;
+    
     /**
      * 查询所有分类
      */
@@ -26,8 +30,7 @@ public class CategoryController {
     @ApiOperation("查询所有分类")
     public Result<List<Category>> list(@RequestParam(required = false) Integer type) {
         log.info("查询所有分类，type={}", type);
-        // 暂时返回空列表，等待 Service 实现
-        List<Category> list = new ArrayList<>();
+        List<Category> list = categoryService.list(type);
         return Result.success(list);
     }
     
@@ -38,7 +41,7 @@ public class CategoryController {
     @ApiOperation("新增分类")
     public Result save(@RequestBody Category category) {
         log.info("新增分类：{}", category);
-        // TODO: 调用 Service
+        categoryService.save(category);
         return Result.success();
     }
     
@@ -49,7 +52,7 @@ public class CategoryController {
     @ApiOperation("修改分类")
     public Result update(@RequestBody Category category) {
         log.info("修改分类：{}", category);
-        // TODO: 调用 Service
+        categoryService.update(category);
         return Result.success();
     }
     
@@ -60,7 +63,7 @@ public class CategoryController {
     @ApiOperation("删除分类")
     public Result delete(@PathVariable Long id) {
         log.info("删除分类：{}", id);
-        // TODO: 调用 Service
+        categoryService.delete(id);
         return Result.success();
     }
     
@@ -71,7 +74,7 @@ public class CategoryController {
     @ApiOperation("启用/停用分类")
     public Result updateStatus(@PathVariable Integer status, @RequestParam Long id) {
         log.info("启用/停用分类：id={}, status={}", id, status);
-        // TODO: 调用 Service
+        categoryService.updateStatus(status, id);
         return Result.success();
     }
 }

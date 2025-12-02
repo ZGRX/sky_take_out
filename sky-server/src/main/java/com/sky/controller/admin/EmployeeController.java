@@ -79,8 +79,7 @@ public class EmployeeController {
     @ApiOperation("查询员工列表")
     public Result<List<Employee>> list(@RequestParam(required = false) String name) {
         log.info("查询员工列表，name={}", name);
-        // 暂时返回空列表，等待 Service 实现
-        List<Employee> list = new ArrayList<>();
+        List<Employee> list = employeeService.list(name);
         return Result.success(list);
     }
     
@@ -91,7 +90,7 @@ public class EmployeeController {
     @ApiOperation("新增员工")
     public Result save(@RequestBody Employee employee) {
         log.info("新增员工：{}", employee);
-        // TODO: 调用 Service
+        employeeService.save(employee);
         return Result.success();
     }
     
@@ -102,8 +101,8 @@ public class EmployeeController {
     @ApiOperation("根据ID查询员工")
     public Result<Employee> getById(@PathVariable Long id) {
         log.info("根据ID查询员工：{}", id);
-        // TODO: 调用 Service
-        return Result.success(null);
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
     }
     
     /**
@@ -113,7 +112,7 @@ public class EmployeeController {
     @ApiOperation("修改员工")
     public Result update(@RequestBody Employee employee) {
         log.info("修改员工：{}", employee);
-        // TODO: 调用 Service
+        employeeService.update(employee);
         return Result.success();
     }
     
@@ -124,7 +123,7 @@ public class EmployeeController {
     @ApiOperation("启用/停用员工账号")
     public Result updateStatus(@PathVariable Integer status, @RequestParam Long id) {
         log.info("启用/停用员工账号：id={}, status={}", id, status);
-        // TODO: 调用 Service
+        employeeService.updateStatus(status, id);
         return Result.success();
     }
     
